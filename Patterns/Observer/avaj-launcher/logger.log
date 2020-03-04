@@ -1,10 +1,21 @@
 Tower says: Baloon#B1(1) registered to weather tower.
-Baloon#B1(1): Sun is melts my Baloon.
-Baloon#B1(1): Sun is melts my Baloon.
+Tower says: Helicopter#H1(2) registered to weather tower.
 Baloon#B1(1): Sun is burning my Baloon.
+Helicopter#H1(2): Sun is melts my Helicopter.
+Baloon#B1(1): Sun is melts my Baloon.
+Helicopter#H1(2): Sun is burning my Helicopter.
 Baloon#B1(1): Sun is burning my Baloon.
-Baloon#B1(1): Snow is blowing my Baloon.
-Baloon#B1(1): Snow is blowing my Baloon.
+Helicopter#H1(2): Sun is melts my Helicopter.
+Baloon#B1(1): Sun is burning my Baloon.
+Helicopter#H1(2): Sun is burning my Helicopter.
 Baloon#B1(1): Snow is frozing my Baloon.
+Helicopter#H1(2): Sun is burning my Helicopter.
+Baloon#B1(1): Snow is frozing my Baloon.
+Helicopter#H1(2): Sun is melts my Helicopter.
+Baloon#B1(1): Snow is blowing my Baloon.
 Baloon#B1(1) landing.
+Helicopter#H1(2): Sun is melts my Helicopter.
 Tower says: Baloon#B1(1) unregistered from weather tower.
+Helicopter#H1(2): Sun is burning my Helicopter.
+Helicopter#H1(2): Sun is burning my Helicopter.
+Helicopter#H1(2): Sun is burning my Helicopter.
