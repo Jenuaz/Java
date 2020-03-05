@@ -46,7 +46,7 @@ public class SwingyView {
         } else if (art.equals("HELM")) {
             Helmet h = new Helmet("Helm");
             lvl = 1;
-            attack = h.getHitPointAmount() + 100;
+            attack = h.getHitPoints() + 100;
             protection = 100;
             exp = 1000;
             hitp = 100;

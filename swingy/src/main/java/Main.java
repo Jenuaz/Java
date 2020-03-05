@@ -1,9 +1,15 @@
+import system.HelperChatFunctions;
 import view.console.Console;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        HelperChatFunctions.messageWelcome();
+
         Console.start();
+
+
 //        try {
 //            WriteToFile.create();
 //

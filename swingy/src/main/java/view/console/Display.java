@@ -1,4 +1,7 @@
 package view.console;
+import system.HelperChatFunctions;
+import system.HelperSysFunctions;
+
 import java.util.Scanner;
 
 
@@ -27,41 +30,17 @@ public class Display  extends Table {
         }
 
         public static int setUpHero() {
-            System.out.println("     SWINGY     \n\n");
-            System.out.println("1. Create your hero.\n2. Select your hero.\n");
-
-            int check = 0;
-
+            HelperChatFunctions.messageCreateOrSelectHero();
             Scanner scanner = new Scanner(System.in);
-
-            while (scanner.hasNextLine()) {
-                String str = scanner.nextLine();
-                if (str.matches("\\s*[1-2]\\s*")) {
-                    check = Integer.parseInt(str);
-                    break;
-                } else {
-                    System.out.println("Enter 1 or 2!");
-                }
-            }
-            return check;
+            return HelperSysFunctions.scannerMatchIntNextLine(scanner, 1, 2);
         }
 
         public static int printHeroList() {
-            System.out.println("Your race is: \n");
-            System.out.println("1. Human.\n2. Undead.\n");
             int check = 0;
             Scanner scanner = new Scanner(System.in);
 
-            while (scanner.hasNextLine()) {
-                String str = scanner.nextLine();
-                if (str.matches("\\s*[1-2]\\s*")) {
-                    check = Integer.parseInt(str);
-                    break;
-                } else {
-                    System.out.println("Enter 1 or 2!");
-                }
-            }
-            return check;
+            HelperChatFunctions.messageRaceOption();
+            return HelperSysFunctions.scannerMatchIntNextLine(scanner, 1, 2);
         }
 
         public static void showAvailableDirections() {

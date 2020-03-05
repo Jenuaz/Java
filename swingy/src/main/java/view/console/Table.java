@@ -1,7 +1,7 @@
 package view.console;
 import model.object.Player;
+import system.HelperSysFunctions;
 
-import javax.swing.text.PlainView;
 import java.util.Scanner;
 
 public class Table {
@@ -26,15 +26,7 @@ public class Table {
             int check = 0;
             Scanner scanner = new Scanner(System.in);
 
-            while (scanner.hasNextLine()) {
-                String str = scanner.nextLine();
-                if (str.matches("\\s*[1-2]\\s*")) {
-                    check = Integer.parseInt(str);
-                    break;
-                } else {
-                    System.out.println("Choose from given options.");
-                }
-            }
+            HelperSysFunctions.scannerMatchIntNextLine(scanner, 1, 2);
             return check;
         }
 

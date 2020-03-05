@@ -5,11 +5,12 @@ import controller.Heros;
 import model.object.Player;
 import model.race_enemy.RaceModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ConsoleMap {
+public class WorldMap {
 
         private static ArrayList<RaceModel> villianArray = new ArrayList<RaceModel>();
         private static ArrayList<RaceModel> tmpArray = new ArrayList<RaceModel>();
@@ -30,14 +31,11 @@ public class ConsoleMap {
         private static Player player;
         private RaceModel villian = new RaceModel();
 
-        public ConsoleMap(Player player) {
+        public WorldMap(Player player) {
             this.player = player;
         }
 
-        public void endOfGame() {
-            System.out.println("\nYou loose!\n\n");
-            System.exit(0);
-        }
+
 
         public void setEnemies() {
             switch (this.villianNbr = player.getHeroStats().getLvl() * 8) {
@@ -66,7 +64,7 @@ public class ConsoleMap {
             this.yCoordinate = y;
         }
 
-        public void victory() {
+        public void victory() throws IOException {
             if (player.getHeroStats().getExp() > 1000 && player.getHeroStats().getExp() < 2450) {
                 this.lvl = 1;
             } else if (player.getHeroStats().getExp() >= 2450 && player.getHeroStats().getExp() < 4800) {
@@ -156,8 +154,10 @@ public class ConsoleMap {
                     enemyPosY = rand.nextInt(size);
                 }
                 villian = Heros.newVillian(player);
-                villian.setVillianPosition(enemyPosX, enemyPosY);
-                regEnemy(villian);
+                if (villian != null) {
+                    villian.setVillianPosition(enemyPosX, enemyPosY);
+                    regEnemy(villian);
+                }
             }
         }
 
@@ -171,7 +171,8 @@ public class ConsoleMap {
         }
 
         public void showGameField() {
-            if (set = false) {
+
+            if (set == false) {
                 setMap();
                 setPlayerPosition();
                 setEnemies();
@@ -200,13 +201,13 @@ public class ConsoleMap {
 
             // check collision with enemy
             for (RaceModel villian : villianArray) {
-//            boolean collision = enemyCollision(this.xCoordinate, this.yCoordinate, villian.getyCoordinate(), villian.getxCoordinate());
-//            if (collision == true) {
-//                break ;
-//            }
+            boolean collision = enemyCollision(this.xCoordinate, this.yCoordinate, villian.getyCoordinate(), villian.getxCoordinate());
+                if (collision == true) {
+                    break ;
+                }
             }
 
-            System.out.println("Lvl: " + player.getHeroStats().getLvl() + " | " + "Attack: " + player.getHeroStats().getAttack() + " | " +
+            System.out.println("LEVEL: " + player.getHeroStats().getLvl() + " | " + "Attack: " + player.getHeroStats().getAttack() + " | " +
                     "Protection: "+ player.getHeroStats().getProtection() + " | " + "Hit Points: " + player.getHeroStats().getHitp() + " | " +
                     "Exp: " + player.getHeroStats().getExp() + "\n\n");
 
@@ -214,25 +215,24 @@ public class ConsoleMap {
                 for (int x = 0; x < xmap; x++) {
                     switch (map[y][x]) {
                         case 0:
-                            System.out.println("|   |");
+                            System.out.print("|   |");
                             break ;
                         case 1:
-                            System.out.println("| m |");
+                            System.out.print("| m |");
                             break ;
                         case 2:
-                            System.out.println("| s |");
+                            System.out.print("| s |");
                             break ;
                         default:
-                            System.out.println("| H |");
+                            System.out.print("| H |");
                             break ;
                     }
                 }
-                System.out.println();
+                System.out.println(" ");
             }
-
         }
 
-        public void updatePlayerPos(int xpos, int ypos) {
+        public void updatePlayerPos(int xpos, int ypos) throws IOException {
             int previousX = this.xCoordinate;
             int previousY = this.yCoordinate;
             this.xCoordinate += xpos;
@@ -297,7 +297,7 @@ public class ConsoleMap {
                                 deleteEnemy(collided);
                                 return true;
                             } else {
-                                endOfGame();
+                                HelperChatFunctions.messageEndOfGame();
                                 break ;
                             }
                         } else {

@@ -2,11 +2,14 @@ package controller;
 
 import model.object.Player;
 import model.race_enemy.RaceModel;
-import system.ConsoleMap;
+import system.WorldMap;
 import system.RFile;
 import view.console.Display;
 
+import java.io.BufferedReader;
 import java.io.Console;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
 public class CoreController {
 
@@ -23,17 +26,23 @@ public class CoreController {
             return false;
         }
 
-        public static void go(Player player) {
-            ConsoleMap map = new ConsoleMap(player);
+        public static void go(Player player) throws IOException {
+            WorldMap map = new WorldMap(player);
             map.showGameField();
             Display.showAvailableDirections();
-            Console console = System.console();
+            Console console;
+            console = System.console();
 
             while (true) {
-                String str = console.readLine();
-
-                if (str.matches("\\s*[1-5]\\s*")) {
-                    int dir = Integer.parseInt(str);
+               // String str = console.readLine();
+                int tmp = 0;
+                BufferedReader str = new BufferedReader(new InputStreamReader(System.in));
+                System.out.print("Hello. Please write your name: ");
+                String name = str.readLine();
+                System.out.println("Your name is: "+name);
+                tmp = Integer.parseInt(name);
+                if (tmp > 0 && tmp <= 5) { //str.matches("\\s*[1-5]\\s*")
+                    int dir = tmp;
                     if (dir == 1) {
                         map.updatePlayerPos(1, 0);
                         map.showGameField();

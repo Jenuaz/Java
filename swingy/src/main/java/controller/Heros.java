@@ -39,7 +39,7 @@ public class Heros {
             if (artif.equals("HELM")) {
                 Helmet h = new Helmet("Helm");
                 lvl = player.getHeroStats().getLvl();
-                attack = h.getHitPointAmount() + 100;
+                attack = h.getHitPoints() + 100;
                 protection = 100;
                 hitp = 100;
                 exp = 0;
@@ -65,7 +65,7 @@ public class Heros {
             if (artif.equals("HELM")) {
                 Helmet h = new Helmet("Helm");
                 lvl = player.getHeroStats().getLvl();
-                attack = h.getHitPointAmount() + 100;
+                attack = h.getHitPoints() + 100;
                 protection = 100;
                 hitp = 100;
                 exp = 0;

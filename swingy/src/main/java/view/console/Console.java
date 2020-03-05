@@ -8,29 +8,31 @@ import view.gui.SwingyView;
 import java.util.Scanner;
 
 public class Console {
+
     public static void start() {
         String hero;
         Player player;
         int type;
         int option = 0;
         int start;
-        int createPlayer;
+        int readCreatePlayer;
 
         try {
-            createPlayer = Display.setUpHero();
-            if (createPlayer == 1) {
+            readCreatePlayer = Display.setUpHero();
+            if (readCreatePlayer == 1) {
                 hero = Display.greetPlayer();
                 type = Display.printHeroList();
                 player = SwingyView.determinePlayer(hero, type);
                 start = Table.showInfo(type, hero, player);
-
+                System.out.println("Go");
                 if (start == 1) {
+                    System.out.println("Go");
                     CoreController.go(player);
                 } else {
                     System.out.println("\nThanks for visiting my game!\n");
                     System.exit(0);
                 }
-            } else if (createPlayer == 2) {
+            } else if (readCreatePlayer == 2) {
                 RFile.getBaseOfPlayers();
 
                 Scanner scanner = new Scanner(System.in);

@@ -2,13 +2,13 @@ package model.equipment;
 
 public class Helmet extends Equipment{
 
-    private int hitPointAmount = 80;
+    private int hitPoints = 80;
 
-    public Helmet(String hitPointAmount) {
-        super(hitPointAmount);
+    public Helmet(String hitPoints) {
+        super(hitPoints);
     }
 
-    public int getHitPointAmount() {
-        return this.hitPointAmount;
+    public int getHitPoints() {
+        return this.hitPoints;
     }
 }
