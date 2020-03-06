@@ -6,28 +6,24 @@ import java.util.Scanner;
 
 public class Table {
 
-        public static int showInfo(long ch, String hero, Player player) {
-            char eol = '\n';
-            System.out.println("Welcome to SWINGY!\n\n" + hero + ", your statistics: ");
+        public static int showInfo(Player player) {
+            System.out.println("Welcome to SWINGY!\n\n" + player.getHero() + ", your statistics: ");
 
-            if (ch == 1) {
-                System.out.println("Your choice is HUMAN: " + eol);
-                System.out.println("Lvl: " + player.getHeroStats().getLvl() + eol + "Attack: " + player.getHeroStats().getAttack() + eol +
-                        "Protection: " + player.getHeroStats().getProtection() + eol + "Exp: " + player.getHeroStats().getExp() + eol +
-                        "Hit Points: " + player.getHeroStats().getHitp() + eol + "Artif: " + player.getArt().getArtType() + eol + eol);
+            if (player.getHeroStats().getType().equals("Human")) {
+                System.out.println("Your choice is HUMAN: " + "\n");
+                System.out.println("Lvl: " + player.getHeroStats().getLvl() + "\n" + "Attack: " + player.getHeroStats().getAttack() + "\n" +
+                        "Protection: " + player.getHeroStats().getProtection() + "\n" + "Exp: " + player.getHeroStats().getExp() + "\n" +
+                        "Hit Points: " + player.getHeroStats().getHitp() + "\n" + "Artif: " + player.getArt().getArtType() + "\n" + "\n");
                 chooseStartExit();
-            } else if (ch == 2) {
-                System.out.println("Your choice is UNDEAD: " + eol);
-                System.out.println("Lvl: " + player.getHeroStats().getLvl() + eol + "Attack: " + player.getHeroStats().getAttack() + eol +
-                        "Protection: " + player.getHeroStats().getProtection() + eol + "Exp: " + player.getHeroStats().getExp() + eol +
-                        "Hit Points: " + player.getHeroStats().getHitp() + eol + "Artif: " + player.getArt().getArtType() + eol + eol);
+            } else if (player.getHeroStats().getType().equals("Undead")) {
+                System.out.println("Your choice is UNDEAD: " + "\n");
+                System.out.println("Lvl: " + player.getHeroStats().getLvl() + "\n" + "Attack: " + player.getHeroStats().getAttack() + "\n" +
+                        "Protection: " + player.getHeroStats().getProtection() + "\n" + "Exp: " + player.getHeroStats().getExp() + "\n" +
+                        "Hit Points: " + player.getHeroStats().getHitp() + "\n" + "Artif: " + player.getArt().getArtType() + "\n" + "\n");
                 chooseStartExit();
             }
-            int check = 0;
             Scanner scanner = new Scanner(System.in);
-
-            HelperSysFunctions.scannerMatchIntNextLine(scanner, 1, 2);
-            return check;
+            return HelperSysFunctions.scannerMatchIntNextLine(scanner, 1, 2);
         }
 
         public static void chooseStartExit() {

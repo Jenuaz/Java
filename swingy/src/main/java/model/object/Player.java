@@ -6,10 +6,7 @@ import model.object.service.HeroStats;
 import javax.validation.constraints.NotNull;
 
 public class Player {
-
-    public Player() {
-
-    }
+    private String type;
 
     @NotNull
     private Equipment art;
@@ -18,21 +15,29 @@ public class Player {
     private HeroStats heroStats = new HeroStats();
 
     @NotNull
-    private String newPlayer;
+    private String hero;
+
+    public Player() {
+
+    }
 
 
-    protected Player(String newPlayer, HeroStats heroStats, Equipment art) {
-        this.newPlayer = newPlayer;
+    protected Player(String hero, HeroStats heroStats, Equipment art) {
+        this.hero = hero;
         this.heroStats = heroStats;
         this.art = art;
     }
 
-    public String getNewPlayer() {
-        return this.newPlayer;
+    public void setHero(String hero) {
+        this.hero = hero;
+    }
+
+    public String getHero() {
+        return this.hero;
     }
 
     public HeroStats getHeroStats() {
-        return this.heroStats = heroStats;
+        return this.heroStats;
     }
 
     public Equipment getArt() {
@@ -41,6 +46,10 @@ public class Player {
 
     public void setArt(Equipment art) {
         this.art = art;
+    }
+
+    public void setHeroStats(HeroStats heroStats) {
+        this.heroStats = heroStats;
     }
 
 

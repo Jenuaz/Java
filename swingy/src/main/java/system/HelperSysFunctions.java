@@ -14,4 +14,13 @@ public class HelperSysFunctions {
         }
         return (0);
     }
+
+    public static boolean isNbr(String str) {
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c) != true) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

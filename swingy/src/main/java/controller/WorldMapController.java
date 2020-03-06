@@ -1,19 +1,17 @@
-package system;
+package controller;
 
-import controller.CoreController;
-import controller.Heros;
 import model.object.Player;
 import model.race_enemy.RaceModel;
+import system.HelperChatFunctions;
+import system.RFile;
+import view.console.ConsoleView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class WorldMap {
-
-        private static ArrayList<RaceModel> villianArray = new ArrayList<RaceModel>();
-        private static ArrayList<RaceModel> tmpArray = new ArrayList<RaceModel>();
+public class WorldMapController {
 
         private static int size;
         private static int[][] map;
@@ -31,11 +29,16 @@ public class WorldMap {
         private static Player player;
         private RaceModel villian = new RaceModel();
 
-        public WorldMap(Player player) {
-            this.player = player;
+        private static ArrayList<RaceModel> villianArray = new ArrayList<RaceModel>();
+        private static ArrayList<RaceModel> tmpArray = new ArrayList<RaceModel>();
+
+        public WorldMapController() {
+
         }
 
-
+        public WorldMapController(Player player) {
+            this.player = player;
+        }
 
         public void setEnemies() {
             switch (this.villianNbr = player.getHeroStats().getLvl() * 8) {
@@ -89,7 +92,7 @@ public class WorldMap {
                         int ch = Integer.parseInt(str);
                         if (ch == 1) {
                             villianArray.removeAll(villianArray);
-                            CoreController.go(player);
+//                            CoreController.go(player);
                             System.out.println("Continua playing.");
                         } else if (ch == 2) {
                             System.out.println("Thanks for playing SWINGY!\n\n");
@@ -193,7 +196,7 @@ public class WorldMap {
 
             // initialize villians
             for (RaceModel enemy : villianArray) {
-                map[villian.getyCoordinate()][villian.getxCoordinate()] = villian.getIdType();
+                map[enemy.getyCoordinate()][enemy.getxCoordinate()] = enemy.getIdType();
             }
 
             //initialize hero
@@ -203,33 +206,16 @@ public class WorldMap {
             for (RaceModel villian : villianArray) {
             boolean collision = enemyCollision(this.xCoordinate, this.yCoordinate, villian.getyCoordinate(), villian.getxCoordinate());
                 if (collision == true) {
+                    System.out.println("Fight");
                     break ;
                 }
             }
 
-            System.out.println("LEVEL: " + player.getHeroStats().getLvl() + " | " + "Attack: " + player.getHeroStats().getAttack() + " | " +
-                    "Protection: "+ player.getHeroStats().getProtection() + " | " + "Hit Points: " + player.getHeroStats().getHitp() + " | " +
-                    "Exp: " + player.getHeroStats().getExp() + "\n\n");
+//            System.out.println("LEVEL: " + player.getHeroStats().getLvl() + " | " + "Attack: " + player.getHeroStats().getAttack() + " | " +
+//                    "Protection: "+ player.getHeroStats().getProtection() + " | " + "Hit Points: " + player.getHeroStats().getHitp() + " | " +
+//                    "Exp: " + player.getHeroStats().getExp() + "\n\n");
 
-            for (int y = 0; y < ymap; y++) {
-                for (int x = 0; x < xmap; x++) {
-                    switch (map[y][x]) {
-                        case 0:
-                            System.out.print("|   |");
-                            break ;
-                        case 1:
-                            System.out.print("| m |");
-                            break ;
-                        case 2:
-                            System.out.print("| s |");
-                            break ;
-                        default:
-                            System.out.print("| H |");
-                            break ;
-                    }
-                }
-                System.out.println(" ");
-            }
+            ConsoleView.render(this);
         }
 
         public void updatePlayerPos(int xpos, int ypos) throws IOException {
@@ -314,6 +300,18 @@ public class WorldMap {
         public void battle(RaceModel collided) {
             villianArray.remove(collided);
             upgrdExp(2);
-
         }
+
+
+    public static int getXmap() {
+        return xmap;
     }
+
+    public static int getYmap() {
+        return ymap;
+    }
+
+    public static Integer getMap(Integer x, Integer y) {
+        return map[y][x];
+    }
+}

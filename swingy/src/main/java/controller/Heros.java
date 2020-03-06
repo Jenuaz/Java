@@ -15,11 +15,11 @@ import model.race_enemy.RaceModel;
 import java.util.Random;
 
 public class Heros {
-    public static Player newHero(String hero, String player, HeroStats heroStatistics, Equipment art) {
-        if (hero.equals("Human")) {
-            return new RaceOfPlayerHuman(player, heroStatistics, art);
-        } else if (hero.equals("Elf")) {
-            return new RaceOfPlayerElf(player, heroStatistics, art);
+    public static Player newHero(String type, String hero, HeroStats heroStatistics, Equipment art) {
+        if (type.equals("Human") || type.equals("Undead")) {
+            return new RaceOfPlayerHuman(type, hero, heroStatistics, art);
+        } else if (type.equals("Elf")) {
+            return new RaceOfPlayerElf(type, hero, heroStatistics, art);
         } else {
             return null;
         }

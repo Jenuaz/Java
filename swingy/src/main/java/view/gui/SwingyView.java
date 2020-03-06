@@ -21,7 +21,7 @@ public class SwingyView {
     private static int hitp;
     private static int exp;
 
-    public static Player addPlayer(String type, String player) {
+    public static Player addPlayer(String type, String hero) {
         art = Equipment.randomArt();
         if (art.equals("ARMOR")) {
             Armor ar = new Armor("Armor");
@@ -31,8 +31,8 @@ public class SwingyView {
             exp = 1000;
             hitp = 100;
             HeroStats heroStatistics = new HeroStats(type, lvl, attack, protection, hitp, exp);
-            newPlayer = Heros.newHero(type, player, heroStatistics, ar);
-            statistics = type + " " + player + " " + lvl + " " + attack + " " + protection + " " + hitp + " " + exp + " " + art;
+            newPlayer = Heros.newHero(type, hero, heroStatistics, ar);
+            statistics = type + " " + hero + " " + lvl + " " + attack + " " + protection + " " + hitp + " " + exp + " " + art;
         } else if (art.equals("WEAPON")) {
             Weapon w  = new Weapon("Weapon");
             lvl = 1;
@@ -41,8 +41,8 @@ public class SwingyView {
             exp = 1000;
             hitp = 100;
             HeroStats heroStatistics = new HeroStats(type, lvl, attack, protection, hitp, exp);
-            newPlayer = Heros.newHero(type, player, heroStatistics, w);
-            statistics = type + " " + player + " " + lvl + " " + attack + " " + protection + " " + hitp + " " + exp + " " + art;
+            newPlayer = Heros.newHero(type, hero, heroStatistics, w);
+            statistics = type + " " + hero + " " + lvl + " " + attack + " " + protection + " " + hitp + " " + exp + " " + art;
         } else if (art.equals("HELM")) {
             Helmet h = new Helmet("Helm");
             lvl = 1;
@@ -51,18 +51,18 @@ public class SwingyView {
             exp = 1000;
             hitp = 100;
             HeroStats heroStatistics = new HeroStats(type, lvl, attack, protection, hitp, exp);
-            newPlayer = Heros.newHero(type, player, heroStatistics, h);
-            statistics = type + " " + player + " " + lvl + " " + attack + " " + protection + " " + hitp + " " + exp + " " + art;
+            newPlayer = Heros.newHero(type, hero, heroStatistics, h);
+            statistics = type + " " + hero + " " + lvl + " " + attack + " " + protection + " " + hitp + " " + exp + " " + art;
         }
 //        WriteToFile.write(statistics);
         return newPlayer;
     }
 
-    public static Player determinePlayer(String hero, long kind) {
-        if (kind == 1) {
-            return addPlayer("Human", hero);
-        } else if (kind == 2) {
-            return addPlayer("Undead", hero);
+    public static Player determinePlayer(String type, String hero) {
+        if (type.equals("Human")) {
+            return addPlayer(type, hero);
+        } else if (type.equals("Undead")) {
+            return addPlayer(type, hero);
         } else {
             return null;
         }

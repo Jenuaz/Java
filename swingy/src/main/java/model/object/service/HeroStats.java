@@ -9,11 +9,11 @@ public class HeroStats {
     private int attack;
     private int hitp;
     private int protection;
-    private String playerType;
+    private String type;
     private int pow;
 
-    public HeroStats(String playerType, int lvl, int attack, int protection, int hitp, int exp) {
-        this.playerType = playerType;
+    public HeroStats(String type, int lvl, int attack, int protection, int hitp, int exp) {
+        this.type = type;
         this.lvl = lvl;
         this.protection = protection;
         this.hitp = hitp;
@@ -22,8 +22,12 @@ public class HeroStats {
         this.pow = attack + protection;
     }
 
-    public String getPlayerType() {
-        return (this.playerType);
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return (this.type);
     }
 
     public int getExp() {

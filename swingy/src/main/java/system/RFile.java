@@ -69,14 +69,14 @@ public class RFile {
                 File f = new File("PlayerList.txt");
                 FileWriter fileWriter = new FileWriter(f);
                 for (String str : elements) {
-                    if (str.contains(player.getNewPlayer()) && str.contains(player.getHeroStats().getPlayerType())) {
+                    if (str.contains(player.getHero()) && str.contains(player.getHeroStats().getType())) {
                         delStr = str;
                     }
                 }
 
 
-                newStr = (player.getHeroStats().getPlayerType() + " " +
-                        player.getNewPlayer() + " " +
+                newStr = (player.getHeroStats().getType() + " " +
+                        player.getHero() + " " +
                         Integer.toString(player.getHeroStats().getLvl()) + " " +
                         Integer.toString(player.getHeroStats().getAttack()) + " " +
                         Integer.toString(player.getHeroStats().getProtection()) + " " +
