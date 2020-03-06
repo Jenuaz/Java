@@ -9,24 +9,15 @@ public class Display  extends Table {
 
         public static String greetPlayer() {
             System.out.println("Enter your hero name to continue: \n");
-            String hero = null;
+            String hero = " No Name ";
             Scanner scanner = new Scanner(System.in);
 
             while (scanner.hasNextLine()) {
                 hero = scanner.nextLine();
-                break ;
-//                hero = hero.trim();
-//                if (hero.length() > 0) {
-//                    String[] ch = hero.split("\\s");
-//
-//                    if (ch != null) {
-//                        hero = String.format("_ %s", ch);
-//                        break;
-//                    }
-//                } else {
-//                    System.out.println("Enter name!");
-//                }
+                if (!hero.isEmpty())
+                    break ;
             }
+            System.out.println("Your name is :" + hero);
             return hero;
         }
 

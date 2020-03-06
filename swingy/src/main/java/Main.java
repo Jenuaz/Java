@@ -33,7 +33,10 @@ public class Main {
             if (createOrDownloadPlayer == CREATE_PLAYER.getValue()) {
                 game.getPlayer().setHero(Display.greetPlayer());
                 game.getPlayer().getHeroStats().setType(heroArrayTyps[Display.printHeroList() - 1]);
+
+
                 game.setPlayer(SwingyView.determinePlayer(game.getPlayer().getHeroStats().getType(), game.getPlayer().getHero()));
+                System.out.println(game.getPlayer().getHeroStats().getType() + " was setted up");
 
                 Integer start = Table.showInfo(game.getPlayer());
 
@@ -44,6 +47,7 @@ public class Main {
                     System.exit(0);
                 }
             } else if (createOrDownloadPlayer == DOWNLOAD_PLAYER.getValue()) {
+                System.out.println("Loaded player.");
                 RFile.getBaseOfPlayers();
 
                 Scanner scanner = new Scanner(System.in);

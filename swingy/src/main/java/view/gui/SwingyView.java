@@ -64,6 +64,7 @@ public class SwingyView {
         } else if (type.equals("Undead")) {
             return addPlayer(type, hero);
         } else {
+            System.out.println("For some reason null.");
             return null;
         }
     }

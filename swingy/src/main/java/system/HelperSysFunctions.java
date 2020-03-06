@@ -7,7 +7,9 @@ public class HelperSysFunctions {
         while (scanner.hasNextLine()) {
             String str = scanner.nextLine();
             if (str.matches("\\s*[" + rangeMin + "-" + rangeMax + "]\\s*")) {
-                return  Integer.parseInt(str);
+                Integer result = Integer.parseInt(str);
+                System.out.println("You entered: " + result);
+                return  result;
             } else {
                 System.out.println("Enter 1 or 2!");
             }

@@ -6,7 +6,9 @@ import model.object.service.HeroStats;
 import javax.validation.constraints.NotNull;
 
 public class Player {
-    private String type;
+
+    @NotNull
+    private String hero;
 
     @NotNull
     private Equipment art;
@@ -14,8 +16,6 @@ public class Player {
     @NotNull
     private HeroStats heroStats = new HeroStats();
 
-    @NotNull
-    private String hero;
 
     public Player() {
 

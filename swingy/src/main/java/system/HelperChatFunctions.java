@@ -14,13 +14,14 @@ public class HelperChatFunctions {
         System.exit(0);
     }
     public static void messageCreateOrSelectHero() {
-        System.out.println("     SWINGY     \n\n");
-        System.out.println("1. Create your hero.\n" +
-                "2. Select your hero.\n");
+        System.out.println("     SWINGY     ");
+        System.out.println("1. Create your hero.");
+        System.out.println("2. Select your hero.");
     }
     public static void messageRaceOption(){
-        System.out.println("Your race is: \n");
-        System.out.println("1. Human.\n2. Undead.\n");
+        System.out.println("Your race is: ");
+        System.out.println("1. Human.");
+        System.out.println("2. Undead.");
     }
 
     public static void systemOutPutCondition(String condition){
